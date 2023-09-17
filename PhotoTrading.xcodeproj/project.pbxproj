@@ -19,7 +19,6 @@
 		5D0A2D522AA68DC600AC4B8F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D0A2D512AA68DC600AC4B8F /* GoogleService-Info.plist */; };
 		5D0A2D582AA6A9DE00AC4B8F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A2D572AA6A9DE00AC4B8F /* ProfileView.swift */; };
 		5D0A2D5A2AA6AA0800AC4B8F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A2D592AA6AA0800AC4B8F /* HomeView.swift */; };
-		5D0A2D5C2AA6AA1600AC4B8F /* NewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A2D5B2AA6AA1600AC4B8F /* NewItemView.swift */; };
 		5D0A2D5E2AA6AA2900AC4B8F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A2D5D2AA6AA2900AC4B8F /* LoginView.swift */; };
 		5D0A2D602AA6AA3600AC4B8F /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A2D5F2AA6AA3600AC4B8F /* RegisterView.swift */; };
 		5D0A2D642AA6AAAA00AC4B8F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A2D632AA6AAAA00AC4B8F /* User.swift */; };
@@ -39,6 +38,7 @@
 		5DA3E67C2AB011300041FA81 /* MatchManager+GKMatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3E67B2AB011300041FA81 /* MatchManager+GKMatchDelegate.swift */; };
 		5DA4EB402AAD4C760073081B /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4EB3F2AAD4C760073081B /* GameView.swift */; };
 		5DA4EB422AAD4F0D0073081B /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4EB412AAD4F0D0073081B /* DrawingView.swift */; };
+		5DA525B62AB68EFE002F970B /* TradeCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA525B52AB68EFE002F970B /* TradeCompleteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +71,6 @@
 		5D0A2D512AA68DC600AC4B8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5D0A2D572AA6A9DE00AC4B8F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5D0A2D592AA6AA0800AC4B8F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		5D0A2D5B2AA6AA1600AC4B8F /* NewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemView.swift; sourceTree = "<group>"; };
 		5D0A2D5D2AA6AA2900AC4B8F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5D0A2D5F2AA6AA3600AC4B8F /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		5D0A2D632AA6AAAA00AC4B8F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -92,6 +91,7 @@
 		5DA3E67B2AB011300041FA81 /* MatchManager+GKMatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchManager+GKMatchDelegate.swift"; sourceTree = "<group>"; };
 		5DA4EB3F2AAD4C760073081B /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		5DA4EB412AAD4F0D0073081B /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		5DA525B52AB68EFE002F970B /* TradeCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeCompleteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,9 +185,6 @@
 				5D0A2D222AA686C300AC4B8F /* MainView.swift */,
 				5D0A2D572AA6A9DE00AC4B8F /* ProfileView.swift */,
 				5D0A2D592AA6AA0800AC4B8F /* HomeView.swift */,
-				5D0A2D5B2AA6AA1600AC4B8F /* NewItemView.swift */,
-				5D0A2D772AA6AFBB00AC4B8F /* HeaderView.swift */,
-				5D9ECF422AA7803300936FBF /* TLButton.swift */,
 				5DA1BD1F2AAD144C00690A9B /* MatchManager.swift */,
 				5DA1BD212AAD145600690A9B /* Misc.swift */,
 				5DA1BD2C2AAD1B1200690A9B /* MenuView.swift */,
@@ -199,6 +196,9 @@
 				5D953D502AB0E694008D9938 /* MainImageBoxView.swift */,
 				5D953D4E2AB0E687008D9938 /* PlayerImageBoxView.swift */,
 				5D953D542AB0E8A0008D9938 /* OpponentImageBoxView.swift */,
+				5DA525B52AB68EFE002F970B /* TradeCompleteView.swift */,
+				5D0A2D772AA6AFBB00AC4B8F /* HeaderView.swift */,
+				5D9ECF422AA7803300936FBF /* TLButton.swift */,
 				5D0A2D5D2AA6AA2900AC4B8F /* LoginView.swift */,
 				5D0A2D5F2AA6AA3600AC4B8F /* RegisterView.swift */,
 			);
@@ -370,6 +370,7 @@
 				5D0A2D782AA6AFBB00AC4B8F /* HeaderView.swift in Sources */,
 				5D0A2D232AA686C300AC4B8F /* MainView.swift in Sources */,
 				5D0A2D5A2AA6AA0800AC4B8F /* HomeView.swift in Sources */,
+				5DA525B62AB68EFE002F970B /* TradeCompleteView.swift in Sources */,
 				5DA4EB422AAD4F0D0073081B /* DrawingView.swift in Sources */,
 				5DA3E67A2AB00E360041FA81 /* MatchManager+GKMatchmakerViewControllerDelegate.swift in Sources */,
 				5D9D0A362AB3718B00CED393 /* PhotoTradingApp.swift in Sources */,
@@ -386,7 +387,6 @@
 				5D0A2D582AA6A9DE00AC4B8F /* ProfileView.swift in Sources */,
 				5D0A2D642AA6AAAA00AC4B8F /* User.swift in Sources */,
 				5D0A2D662AA6AABB00AC4B8F /* ToDoListItem.swift in Sources */,
-				5D0A2D5C2AA6AA1600AC4B8F /* NewItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

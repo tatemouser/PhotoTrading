@@ -39,6 +39,7 @@ struct HomeView: View {
                 Spacer()
                 
                 Button {
+                    // Matchmaking nonsense that i was trying to find
                     matchManager.startMatchmaking()
                 } label: {
                     Text("Trade Now")
