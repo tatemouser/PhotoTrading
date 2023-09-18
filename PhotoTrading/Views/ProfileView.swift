@@ -9,9 +9,16 @@ import SwiftUI
 
 struct ProfileView: View {
     var body: some View {
-        Text("Welcome to the profile!")
+        VStack {
+            Button {
+                
+            } label: {
+                Text("To complete trade view")
+            }
+        }
     }
 }
+
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {

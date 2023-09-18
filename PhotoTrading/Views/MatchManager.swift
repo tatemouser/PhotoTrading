@@ -28,6 +28,12 @@ class MatchManager: NSObject, ObservableObject {
         }
     }
     
+    @Published var p1Confirm = false;
+    @Published var p1Deny = false;
+    
+    @Published var p2Confirm = false;
+    @Published var p2Deny = false;
+    
     
     @Published var lastReceivedDrawing = PKDrawing()
     

@@ -6,245 +6,272 @@
 //
 
 import SwiftUI
+import Combine
 
-struct GameView: View {
+struct ConfirmDenyButton: View {
+    var color: Color
+    var symbol: String
+    @Binding var isConfirmed: Bool
+    
     var body: some View {
-        VStack() {
-            
-            // First View - Opponent Image
-            OpponentImageBoxView()
-                //.frame(maxWidth: .infinity, maxHeight: .infinity)
-                .frame(width: .infinity, height: 200)
-                .background(Color.black)
-                Spacer()
-            // Second View - Main Image
-            MainImageBoxView()
-                //.frame(maxWidth: .infinity, maxHeight: .infinity)
-                .frame(width: .infinity, height: 250)
-                .background(Color("LightBlue1"))
-                Spacer()
-            
-            // Third View - Player Image
-            PlayerImageBoxView()
-                //.frame(maxWidth: .infinity, maxHeight: .infinity)
-                .frame(width: .infinity, height: 250)
-                .background(Color.black)
-                Spacer()
+        Button(action: {
+            // Toggle the confirmation status for the corresponding player
+            self.isConfirmed.toggle()
+        }) {
+            Text(symbol)
+                .padding(.horizontal, 10)
+                .frame(maxWidth: .infinity)
+                
+                .frame(height: 60)
+
+                .foregroundColor(.white)
+                .background(color)
+                .cornerRadius(8)
+                .bold()
+                .font(.system(size: 30))
         }
-        .padding(.bottom, 40)
-        .background(Color.red)
-        .foregroundColor(Color.red)
-        
-//        ZStack {
-//            OpponetImageBoxView()
-//
-//            MainImageBoxView()
-//
-//            PlayerImageBoxView()
-//
-//            //OpponetImageBoxView (exit button on top)
-//            //MainImageBoxView (shows accept / decline status)
-//            //PlayerImageBoxView (has accept and decline)
-//        }
+        .padding(10)
     }
 }
 
-/*
-var countdownTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
-struct GameView: View {
-    @ObservedObject var matchManager: MatchManager
-    @State var drawingGuess = ""
-    @State var eraserEnabled = false
-    
-    func makeGuess() {
-        guard drawingGuess != "" else { return }
-        matchManager.sendString("guess:\(drawingGuess)")
-        drawingGuess = ""
+struct DottedBoxView: View {
+    var body: some View {
+        RoundedRectangle(cornerRadius: 8) // Adjust cornerRadius as needed
+            .stroke(style: StrokeStyle(lineWidth: 1, dash: [5])) // Adjust lineWidth and dash pattern as needed
+            .frame(width: 65, height: 90)
+            .colorInvert()
     }
+}
+
+struct CheckMarkStatusView: View {
+    let color: Color
     
     var body: some View {
-        ZStack {
-            GeometryReader { _ in
-                Image(matchManager.currentlyDrawing ? "drawerBg" : "guesserBg")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-                    .scaleEffect(1.1)
-                
-                VStack {
-                    topBar
-                    
-                    ZStack {
-                        DrawingView(matchManager: matchManager, eraserEnabled: $eraserEnabled)
-                            .aspectRatio(1, contentMode: .fit)
-                            .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(.black, lineWidth: 10))
-                        
-                        VStack {
-                            HStack {
-                                Spacer()
-                                
-                                if matchManager.currentlyDrawing {
-                                    Button {
-                                        eraserEnabled.toggle()
-                                    } label: {
-                                        Image(systemName: eraserEnabled ?
-                                              "eraser.fill" : "eraser")
-                                        .font(.title)
-                                        .foregroundColor(Color.purple)
-                                        .padding(.top, 10)
-                                    }
+        Text("✓")
+            .font(.system(size: 30))
+            .foregroundColor(color)
+    }
+}
+struct XMarkStatusView: View {
+    let color: Color
+    
+    var body: some View {
+        Text("X")
+            .font(.system(size: 30))
+            .foregroundColor(color)
+    }
+}
+
+struct Platform: Hashable {
+    let name: String
+    let imageName: String
+    let color: Color
+}
+
+struct Game: Hashable {
+    let name: String
+    let rating: String
+}
+
+struct GameView: View {
+    @ObservedObject var matchManager: MatchManager = MatchManager()
+    @State var isPlayer1Confirmed = false
+    @State var isPlayer2Confirmed = false
+    @State private var tradeCompleted = false
+
+    @State private var buttonColor: Color = .green // Initialize with the default color
+
+    var platforms: [Platform] = [
+        .init(name: "p1", imageName: "xbox.logo", color: .red),
+        .init(name: "p2", imageName: "xbox.logo", color: .blue)]
+    var games: [Game] = [
+        .init(name: "g1", rating: "23"),
+        .init(name: "g2", rating: "34"),
+        .init(name: "g3", rating: "23"),
+        .init(name: "g4", rating: "34")]
+
+    @State private var path = NavigationPath()
+    var body: some View {
+        NavigationStack(path: $path) {
+            List {
+                Section("platforms") {
+                    ForEach(platforms, id: \.name) { platform in
+                        NavigationLink(value: platform) {
+                            Text(platform.name) // Use Text view instead of Label
+                                .foregroundColor(platform.color)
+                        }
+                    }
+                }
+                ForEach(games, id: \.name) { game in
+                    NavigationLink(value: game) {
+                        Text(game.name)
+                    }
+                }
+            }
+            .navigationTitle("THE TOP")
+            .navigationDestination(for: Platform.self) { platform in
+                ZStack {
+                    platform.color.ignoresSafeArea()
+                    VStack {
+                        Text(platform.name) // Use Text view instead of Label
+                            .foregroundColor(platform.color)
+                        List {
+                            ForEach(games, id: \.name) { game in
+                                NavigationLink(value: game) {
+                                    Text(game.name)
                                 }
                             }
-                            
-                            Spacer()
-                            
                         }
-                        .padding()
-                    }
-                    pastGuesses
-                }
-                .padding(.horizontal, 30)
-                .ignoresSafeArea(.keyboard, edges: .bottom)
-            }
-            
-            VStack {
-                Spacer()
-                
-                promptGroup
-            }
-            .ignoresSafeArea(.container)
-        }
-        .onReceive(countdownTimer) { _ in
-            guard matchManager.isTimeKeeper else { return }
-            matchManager.remainingTime -= 1
-            
-        }
-    }
-    
-    var topBar: some View {
-        ZStack {
-            HStack {
-                Button {
-                    matchManager.match?.disconnect()
-                    matchManager.resetGame()
-                } label: {
-                    Image(systemName: "arrowshape.turn.up.left.circle.fill")
-                        .font(.largeTitle)
-                        .tint(matchManager.currentlyDrawing ?
-                              Color.green :
-                                Color.red)
-                }
-                
-                Spacer()
-                
-                Label("\(matchManager.remainingTime)", systemImage: "clock.fill")
-                    .bold()
-                    .font(.title2)
-                    .foregroundColor(matchManager.currentlyDrawing ?
-                                     Color.green :
-                                        Color.red)
-            }
-            
-            Text("Score: \(matchManager.score)")
-                .bold()
-                .font(.title)
-                .foregroundColor(Color(matchManager.currentlyDrawing ? .blue :  .green))
-            
-        }
-        .padding(.vertical, 15)
-    }
-    
-    var pastGuesses: some View {
-        ScrollView {
-            ForEach(matchManager.pastGuesses) { guess in
-                HStack {
-                    Text(guess.message)
-                        .font(.title2)
-                        .bold(guess.correct)
-                    
-                    if guess.correct {
-                        Image(systemName: "hand.thumbsup.fill")
-                            .foregroundColor(matchManager.currentlyDrawing ?
-                                             Color.green : Color.red
-                            )
                     }
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.bottom, 1)
             }
-        }
-        .padding()
-        .frame(maxWidth: .infinity)
-        .background(
-            (matchManager.currentlyDrawing ?
-             Color.green : Color.red)
-        )
-        .brightness(-0.2)
-        .opacity(0.5)
-        .cornerRadius(20)
-        .padding(.vertical)
-        .padding(.bottom, 130)
-    }
-    
-    var promptGroup: some View {
-        VStack {
-            if matchManager.currentlyDrawing {
-                Label("DRAW:", systemImage: "exclamationmark.bubble.fill")
-                    .font(.title2)
-                    .bold()
-                    .foregroundColor(.white)
-                Text(matchManager.drawPrompt.uppercased())
-                    .font(.largeTitle)
-                    .bold()
-                    .padding()
-                    .foregroundColor(Color.white)
-            } else {
-                HStack {
-                    Label("GUESS THE DRAWING!:", systemImage: "exclamationmark.bubble.fill")
-                        .font(.title2)
-                        .bold()
-                        .foregroundColor(.white)
-                    
-                    Spacer()
-                }
-                
-                HStack {
-                    TextField("Type your guess", text: $drawingGuess)
-                        .padding()
-                        .background(
-                            Capsule(style: .circular)
-                                .fill(.white)
-                        )
-                        .onSubmit(makeGuess)
-                        
-                    
-                    Button {
-                        makeGuess()
-                    } label: {
-                        Image(systemName: "chevron.right.circle.fill")
-                            .renderingMode(.original)
-                            .foregroundColor(Color.black)
-                            .font(.system(size: 50))
+            .navigationDestination(for: Game.self) { game in
+                VStack(spacing: 20) {
+                    Text("\(game.name) - \(game.rating)")
+
+//                    Button("next") {
+//                        path.append(platforms.randomElement()!)
+//                        path.append(platforms.)!)
+//                    }
+                    Button("next") {
+                        path.append(games[1])
+                    }
+
+                    Button("home") {
+                        path.removeLast(path.count)
                     }
                 }
             }
         }
-        .frame(maxWidth: .infinity)
-        .padding([.horizontal, .bottom], 30)
-        .padding(.vertical)
-        .background(
-            (matchManager.currentlyDrawing ? Color.green : Color.red)
-                .opacity(0.5)
-                .brightness(-0.2)
-        )
     }
-}*/
+}
+//        VStack {
+//            //_________________________________________________________________________________________
+//            // First View - Opponent Image
+//            VStack {
+//                HStack(alignment: .top) {
+//                    Text("NAME HERE")
+//                        .font(.system(size: 26))
+//                        .bold()
+//                        .underline()
+//                        .padding(.leading, 30)
+//                    Spacer()
+//                }
+//                ZStack {
+//                    HStack {
+//                        DottedBoxView()
+//                        DottedBoxView()
+//                        DottedBoxView()
+//                        DottedBoxView()
+//                        DottedBoxView()
+//                    }
+//                    .padding(.bottom, 15)
+//                }
+//            }
+//            .padding(.top, 40)
+//            .frame(width: .infinity, height: 200)
+//            .background(Color.black)
+//
+//            Spacer()
+//
+//
+//
+//
+//            //_________________________________________________________________________________________
+//            // Second View - Main Image
+//            VStack {
+//                HStack {
+//                    DottedBoxView()
+//                    DottedBoxView()
+//                    DottedBoxView()
+//                    DottedBoxView()
+//
+//                    if isPlayer2Confirmed {
+//                        CheckMarkStatusView(color: .green)
+//                    } else {
+//                        XMarkStatusView(color: .red)
+//                    }
+//                    //                CheckMarkStatusView()
+//                    //                XMarkStatusView()
+//                }
+//                //.padding(.trailing, 50)
+//
+//                HStack {
+//                    DottedBoxView()
+//                    DottedBoxView()
+//                    DottedBoxView()
+//                    DottedBoxView()
+//
+//                    if isPlayer1Confirmed {
+//                        CheckMarkStatusView(color: .green)
+//
+//                    } else {
+//                        XMarkStatusView(color: .red)
+//                    }
+//                    //                CheckMarkStatusView()
+//                    //                XMarkStatusView()
+//                }
+//                //.padding(.trailing, 50)
+//            }
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//            .background(Color.black)
+//
+//            .frame(width: .infinity, height: 250)
+//            .background(Color("LightBlue1"))
+//
+//            Spacer()
+//
+//
+//
+//            //_________________________________________________________________________________________
+//            // Third View - Player Image
+//            VStack {
+//                HStack {
+//                    DottedBoxView()
+//                    DottedBoxView()
+//                    DottedBoxView()
+//                    DottedBoxView()
+//                    DottedBoxView()
+//                }
+//                .padding(.top, 20)
+//
+//                HStack {
+//                    if isPlayer1Confirmed {
+//                        ConfirmDenyButton(color: .red, symbol: "Reject", isConfirmed: $isPlayer1Confirmed)
+//                    } else {
+//                        ConfirmDenyButton(color: .green, symbol: "Confirm", isConfirmed: $isPlayer1Confirmed)
+//                    }
+//                }
+//
+//                Rectangle()
+//                    .frame(height: 13)
+//                    .foregroundColor(Color.red)
+//                    .edgesIgnoringSafeArea(.bottom)
+//                // Seperates trade now button
+//                    .padding(.top, 30)
+//
+//                //            Rectangle()
+//                //            .frame(height: 5)
+//                //            .foregroundColor(Color.red)
+//                //            .edgesIgnoringSafeArea(.bottom)
+//            }
+//            //.padding(.bottom, 30)
+//            .background(Color.black)
+//            .frame(width: .infinity, height: 250)
+//            .background(Color.black)
+//
+//            Spacer()
+//
+//        }
+//        .padding(.bottom, 40)
+//        .background(Color.red)
+//        .foregroundColor(Color.red)
+//    }
+//}
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        //GameView(matchManager: MatchManager())
-        GameView()
+        GameView(matchManager: MatchManager())
+        //GameView()
     }
 }

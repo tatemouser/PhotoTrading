@@ -12,6 +12,8 @@ struct TradeCompleteView: View {
 
     var body: some View {
         ZStack {
+            Color.red.edgesIgnoringSafeArea(.all)
+            
             VStack {
                 // Names and arrows
                 Text("------------>")
@@ -21,6 +23,9 @@ struct TradeCompleteView: View {
                     Spacer()
                     Text("Theo")
                 }
+                .foregroundColor(Color.white)
+                .fontWeight(.bold)
+                .font(.title)
                 .padding(30)
                 
                 Text("<-------------")
