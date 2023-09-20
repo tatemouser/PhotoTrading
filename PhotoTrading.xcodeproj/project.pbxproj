@@ -31,6 +31,9 @@
 		5DA1BD202AAD144C00690A9B /* MatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA1BD1F2AAD144C00690A9B /* MatchManager.swift */; };
 		5DA1BD222AAD145600690A9B /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA1BD212AAD145600690A9B /* Misc.swift */; };
 		5DA1BD2D2AAD1B1200690A9B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA1BD2C2AAD1B1200690A9B /* MenuView.swift */; };
+		5DA291152ABA8FDF00CFDED5 /* OpponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA291142ABA8FDF00CFDED5 /* OpponentView.swift */; };
+		5DA291172ABA902900CFDED5 /* MiddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA291162ABA902900CFDED5 /* MiddleView.swift */; };
+		5DA291192ABA905A00CFDED5 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA291182ABA905A00CFDED5 /* PlayerView.swift */; };
 		5DA3E67A2AB00E360041FA81 /* MatchManager+GKMatchmakerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3E6792AB00E360041FA81 /* MatchManager+GKMatchmakerViewControllerDelegate.swift */; };
 		5DA3E67C2AB011300041FA81 /* MatchManager+GKMatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3E67B2AB011300041FA81 /* MatchManager+GKMatchDelegate.swift */; };
 		5DA4EB402AAD4C760073081B /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4EB3F2AAD4C760073081B /* GameView.swift */; };
@@ -80,6 +83,9 @@
 		5DA1BD1F2AAD144C00690A9B /* MatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchManager.swift; sourceTree = "<group>"; };
 		5DA1BD212AAD145600690A9B /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		5DA1BD2C2AAD1B1200690A9B /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		5DA291142ABA8FDF00CFDED5 /* OpponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentView.swift; sourceTree = "<group>"; };
+		5DA291162ABA902900CFDED5 /* MiddleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleView.swift; sourceTree = "<group>"; };
+		5DA291182ABA905A00CFDED5 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		5DA3E6782AAFFF050041FA81 /* PhotoTrading.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PhotoTrading.entitlements; sourceTree = "<group>"; };
 		5DA3E6792AB00E360041FA81 /* MatchManager+GKMatchmakerViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchManager+GKMatchmakerViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		5DA3E67B2AB011300041FA81 /* MatchManager+GKMatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchManager+GKMatchDelegate.swift"; sourceTree = "<group>"; };
@@ -187,6 +193,9 @@
 				5DA3E6792AB00E360041FA81 /* MatchManager+GKMatchmakerViewControllerDelegate.swift */,
 				5DA3E67B2AB011300041FA81 /* MatchManager+GKMatchDelegate.swift */,
 				5DA4EB3F2AAD4C760073081B /* GameView.swift */,
+				5DA291182ABA905A00CFDED5 /* PlayerView.swift */,
+				5DA291162ABA902900CFDED5 /* MiddleView.swift */,
+				5DA291142ABA8FDF00CFDED5 /* OpponentView.swift */,
 				5DA525B52AB68EFE002F970B /* TradeCompleteView.swift */,
 				5D0A2D772AA6AFBB00AC4B8F /* HeaderView.swift */,
 				5D9ECF422AA7803300936FBF /* TLButton.swift */,
@@ -357,6 +366,8 @@
 			files = (
 				5DA3E67C2AB011300041FA81 /* MatchManager+GKMatchDelegate.swift in Sources */,
 				5D0A2D5E2AA6AA2900AC4B8F /* LoginView.swift in Sources */,
+				5DA291172ABA902900CFDED5 /* MiddleView.swift in Sources */,
+				5DA291192ABA905A00CFDED5 /* PlayerView.swift in Sources */,
 				5D0A2D782AA6AFBB00AC4B8F /* HeaderView.swift in Sources */,
 				5D0A2D232AA686C300AC4B8F /* MainView.swift in Sources */,
 				5D0A2D5A2AA6AA0800AC4B8F /* HomeView.swift in Sources */,
@@ -367,6 +378,7 @@
 				5DA1BD222AAD145600690A9B /* Misc.swift in Sources */,
 				5D0A2D602AA6AA3600AC4B8F /* RegisterView.swift in Sources */,
 				5D941D432AA93E7B007BA40D /* Extensions.swift in Sources */,
+				5DA291152ABA8FDF00CFDED5 /* OpponentView.swift in Sources */,
 				5DA1BD2D2AAD1B1200690A9B /* MenuView.swift in Sources */,
 				5D9ECF432AA7803300936FBF /* TLButton.swift in Sources */,
 				5D9901342AAE4B0000CA84A7 /* AddFriendsView.swift in Sources */,

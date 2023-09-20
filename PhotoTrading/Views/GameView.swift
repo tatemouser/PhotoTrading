@@ -12,7 +12,7 @@ struct ConfirmDenyButton: View {
     var color: Color
     var symbol: String
     @Binding var isConfirmed: Bool
-    
+
     var body: some View {
         Button(action: {
             // Toggle the confirmation status for the corresponding player
@@ -30,7 +30,6 @@ struct ConfirmDenyButton: View {
                 .bold()
                 .font(.system(size: 30))
         }
-        .padding(10)
     }
 }
 
@@ -71,13 +70,12 @@ struct Pathway: Hashable {
     let name: String
 }
 
-
-
 struct GameView: View {
     @ObservedObject var matchManager: MatchManager = MatchManager()
     @State var isPlayer1Confirmed = false
     @State var isPlayer2Confirmed = false
     @State private var tradeCompleted = false
+    // For button confirmation window
     
     @State private var buttonColor: Color = .green
     
@@ -92,146 +90,23 @@ struct GameView: View {
     
     @State private var path = NavigationPath()
     
+    @State private var isPlayerReady = false // Declare isPlayerReady as @State
+
     var body: some View {
         NavigationStack(path: $path) {
-//            if isPlayer1Confirmed {
-//
-//
-//            NavigationLink(destination: TradeCompleteView(matchManager: matchManager)) {
-//                Text("to do")
-//            }
-            NavigationLink(value: pathway[1]) {
-                Text("to the games")
-            }
-            .navigationTitle("THE TOP")
 
-            .navigationDestination(for: Pathway.self) { game in
-                VStack(spacing: 20) {
-                    Text("\(game.name)")
-
-                    Button("next") {
-                        path.append(pathway[1])
-                    }
-
-                    Button("home") {
-                        path.removeLast(path.count)
-                    }
-                }
-            }
             VStack {
-                //_________________________________________________________________________________________
-                // First View - Opponent Image
-                VStack {
-                    HStack(alignment: .top) {
-                        Text("NAME HERE")
-                            .font(.system(size: 26))
-                            .bold()
-                            .underline()
-                            .padding(.leading, 30)
-                        Spacer()
-                    }
-                    ZStack {
-                        HStack {
-                            DottedBoxView()
-                            DottedBoxView()
-                            DottedBoxView()
-                            DottedBoxView()
-                            DottedBoxView()
-                        }
-                        .padding(.bottom, 15)
-                    }
-                }
-                .padding(.top, 40)
-                .frame(width: .infinity, height: 200)
-                .background(Color.black)
+                OpponentView()
                 
                 Spacer()
+               
+                //MiddleView()
+                Text("Player is ready: \(isPlayerReady ? "Yes" : "No")")
+                            
+                MiddleView(isPlayerReady: $isPlayerReady) // Pass
                 
-                
-                
-                
-                //_________________________________________________________________________________________
-                // Second View - Main Image
-                VStack {
-                    HStack {
-                        DottedBoxView()
-                        DottedBoxView()
-                        DottedBoxView()
-                        DottedBoxView()
-                        
-                        if isPlayer2Confirmed {
-                            CheckMarkStatusView(color: .green)
-                        } else {
-                            XMarkStatusView(color: .red)
-                        }
-                        //                CheckMarkStatusView()
-                        //                XMarkStatusView()
-                    }
-                    //.padding(.trailing, 50)
-                    
-                    HStack {
-                        DottedBoxView()
-                        DottedBoxView()
-                        DottedBoxView()
-                        DottedBoxView()
-                        
-                        if isPlayer1Confirmed {
-                            CheckMarkStatusView(color: .green)
-                        } else {
-                            XMarkStatusView(color: .red)
-                        }
-                        //                CheckMarkStatusView()
-                        //                XMarkStatusView()
-                    }
-                    //.padding(.trailing, 50)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.black)
-                
-                .frame(width: .infinity, height: 250)
-                .background(Color("LightBlue1"))
-                
-                Spacer()
-                
-                
-                
-                //_________________________________________________________________________________________
-                // Third View - Player Image
-                VStack {
-                    HStack {
-                        DottedBoxView()
-                        DottedBoxView()
-                        DottedBoxView()
-                        DottedBoxView()
-                        DottedBoxView()
-                    }
-                    .padding(.top, 20)
-                    
-                    HStack {
-                        if isPlayer1Confirmed {
-                            ConfirmDenyButton(color: .red, symbol: "Reject", isConfirmed: $isPlayer1Confirmed)
-                        } else {
-                            ConfirmDenyButton(color: .green, symbol: "Confirm", isConfirmed: $isPlayer1Confirmed)
-                        }
-                    }
-                    
-                    Rectangle()
-                        .frame(height: 13)
-                        .foregroundColor(Color.red)
-                        .edgesIgnoringSafeArea(.bottom)
-                    // Seperates trade now button
-                        .padding(.top, 30)
-                    
-                    //            Rectangle()
-                    //            .frame(height: 5)
-                    //            .foregroundColor(Color.red)
-                    //            .edgesIgnoringSafeArea(.bottom)
-                }
-                //.padding(.bottom, 30)
-                .background(Color.black)
-                .frame(width: .infinity, height: 250)
-                .background(Color.black)
-                
+                PlayerView()
+
                 Spacer()
                 
             }
@@ -248,3 +123,53 @@ struct GameView_Previews: PreviewProvider {
         //GameView()
     }
 }
+
+// NAVIGATION IMPLEMENTATION INFORMATION
+//            if isPlayer1Confirmed {
+//
+//
+//            NavigationLink(destination: TradeCompleteView(matchManager: matchManager)) {
+//                Text("to do")
+//            }
+//            if isPlayer1Confirmed {
+//                NavigationLink(value: pathway[1]) {
+//                    Text("to the games")
+//                }
+//                //            .navigationTitle("THE TOP")
+//                //
+//                .navigationDestination(for: Pathway.self) { game in
+//                    VStack(spacing: 20) {
+//                        Text("\(game.name)")
+//
+//                        Button("next") {
+//                            path.append(pathway[1])
+//                        }
+//
+//                        Button("home") {
+//                            path.removeLast(path.count)
+//                        }
+//                    }
+//                }
+//            }
+
+
+// POP UP WINDOW IMPLEMENTATION
+//
+//@State private var showingAlert = false
+//@State private var name = ""
+//
+//var body: some View {
+//    Button("Enter name") {
+//        showingAlert.toggle()
+//    }
+//    .alert("Deal Confirmed", isPresented: $showingAlert) {
+//        //TextField("Enter your name", text: $name)
+//        Button("Download Now", action: submit)
+//    } message: {
+//        //Text("Xcode will print whatever you type.")
+//    }
+//}
+//
+//func submit() {
+//    print("You entered \(name)")
+//}
