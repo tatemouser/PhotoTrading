@@ -15,7 +15,7 @@ struct OpponentView: View {
                     .font(.system(size: 26))
                     .bold()
                     .underline()
-                    .frame(maxWidth: .infinity, alignment: .center)
+                    //.frame(maxWidth: .infinity, alignment: .center)
                 Spacer()
             }
             ZStack {
@@ -26,11 +26,13 @@ struct OpponentView: View {
                     DottedBoxView()
                     DottedBoxView()
                 }
-                .padding(.bottom, 15)
-                .frame(maxWidth: .infinity, alignment: .center)
+                //.padding(.bottom, 15)
+                //.frame(maxWidth: .infinity, alignment: .center)
+                //.frame(width: .infinity, height: .infinity)
+
             }
         }
-        .frame(width: .infinity, height: .infinity)
+        //.frame(width: .infinity, height: .infinity)
         .background(Color.black)
     }
 }

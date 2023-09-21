@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct MiddleView: View {
-    @Binding var isPlayerReady: Bool // Add a binding to MainView's isPlayerReady
+    //@Binding var isPlayerReady: Bool // Add a binding to MainView's isPlayerReady
 
     var body: some View {
-        Button(action: {
-                    self.isPlayerReady = true // Update isPlayerReady in MainView via binding
-                }) {
-                    Text("Update Player Status")
-                }
+//        Button(action: {
+//                    self.isPlayerReady = true // Update isPlayerReady in MainView via binding
+//                }) {
+//                    Text("Update Player Status")
+//                }
         
         VStack {
             HStack {

@@ -8,30 +8,30 @@
 import SwiftUI
 import Combine
 
-struct ConfirmDenyButton: View {
-    var color: Color
-    var symbol: String
-    @Binding var isConfirmed: Bool
-
-    var body: some View {
-        Button(action: {
-            // Toggle the confirmation status for the corresponding player
-            self.isConfirmed.toggle()
-        }) {
-            Text(symbol)
-                .padding(.horizontal, 10)
-                .frame(maxWidth: .infinity)
-                
-                .frame(height: 60)
-
-                .foregroundColor(.white)
-                .background(color)
-                .cornerRadius(8)
-                .bold()
-                .font(.system(size: 30))
-        }
-    }
-}
+//struct ConfirmDenyButton: View {
+//    var color: Color
+//    var symbol: String
+//    @Binding var isConfirmed: Bool
+//
+//    var body: some View {
+//        Button(action: {
+//            // Toggle the confirmation status for the corresponding player
+//            self.isConfirmed.toggle()
+//        }) {
+//            Text(symbol)
+//                .padding(.horizontal, 10)
+//                .frame(maxWidth: .infinity)
+//
+//                .frame(height: 60)
+//
+//                .foregroundColor(.white)
+//                .background(color)
+//                .cornerRadius(8)
+//                .bold()
+//                .font(.system(size: 30))
+//        }
+//    }
+//}
 
 struct DottedBoxView: View {
     var body: some View {
@@ -96,14 +96,18 @@ struct GameView: View {
         NavigationStack(path: $path) {
 
             VStack {
+                Spacer()
+                
                 OpponentView()
                 
                 Spacer()
                
-                //MiddleView()
-                Text("Player is ready: \(isPlayerReady ? "Yes" : "No")")
+                MiddleView()
+                
+                Spacer()
+                // Text("Player is ready: \(isPlayerReady ? "Yes" : "No")")
                             
-                MiddleView(isPlayerReady: $isPlayerReady) // Pass
+                //MiddleView(isPlayerReady: $isPlayerReady) // Pass
                 
                 PlayerView()
 
