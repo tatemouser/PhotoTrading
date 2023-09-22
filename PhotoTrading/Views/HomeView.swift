@@ -21,21 +21,6 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-//
-//                Text("SELECT FRIEND - TRADE NOW")
-//                    .foregroundColor(.white)
-//                    .font(.title2)
-//
-//                Text("ONETOM")
-//                    .foregroundColor(.white)
-//                Text("TWOTATE")
-//                    .foregroundColor(.white)
-//                Text("THREESAL")
-//                    .foregroundColor(.white)
-//                Text("FOURAL")
-//                    .foregroundColor(.white)
-//                Text("FIVEJJ")
-//                    .foregroundColor(.white)
                 Spacer()
                 
                 Button {
