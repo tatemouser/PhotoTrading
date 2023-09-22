@@ -52,7 +52,7 @@ struct MiddleView: View {
             }
             //.padding(.trailing, 50)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity) //, maxHeight: .infinity)
         .background(Color.black)
         .background(Color("LightBlue1"))
     }
@@ -60,8 +60,7 @@ struct MiddleView: View {
 
 struct MiddleView_Previews: PreviewProvider {
     static var previews: some View {
-        //MiddleView()
-        MainView()
+        MiddleView()
     }
 }
 

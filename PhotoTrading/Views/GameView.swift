@@ -96,23 +96,17 @@ struct GameView: View {
         NavigationStack(path: $path) {
 
             VStack {
-                Spacer()
                 
                 OpponentView()
                 
-                Spacer()
-               
                 MiddleView()
-                
-                Spacer()
+
                 // Text("Player is ready: \(isPlayerReady ? "Yes" : "No")")
                             
                 //MiddleView(isPlayerReady: $isPlayerReady) // Pass
                 
                 PlayerView()
 
-                Spacer()
-                
             }
             .padding(.bottom, 40)
             .background(Color.red)

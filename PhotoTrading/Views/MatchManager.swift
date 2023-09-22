@@ -77,7 +77,8 @@ class MatchManager: NSObject, ObservableObject {
     
     func startMatchmaking() {
         let request = GKMatchRequest()
-        request.minPlayers = 2 
+        //request.minPlayers = 2
+        request.minPlayers = 2
         request.maxPlayers = 2
         
         let matchmakingVC = GKMatchmakerViewController(matchRequest: request)
@@ -90,7 +91,7 @@ class MatchManager: NSObject, ObservableObject {
     func startGame(newMatch: GKMatch) {
         match = newMatch
         match?.delegate = self
-        otherPlayer = match?.players.first
+        //otherPlayer = match?.players.first
         drawPrompt = everydayObjects.randomElement()!
         
         sendString("began:\(playerUUIDKey)")

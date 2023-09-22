@@ -28,7 +28,6 @@
 		5D941D432AA93E7B007BA40D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D941D422AA93E7B007BA40D /* Extensions.swift */; };
 		5D9901342AAE4B0000CA84A7 /* AddFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9901332AAE4B0000CA84A7 /* AddFriendsView.swift */; };
 		5D9D0A362AB3718B00CED393 /* PhotoTradingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D0A352AB3718B00CED393 /* PhotoTradingApp.swift */; };
-		5D9ECF432AA7803300936FBF /* TLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9ECF422AA7803300936FBF /* TLButton.swift */; };
 		5DA1BD202AAD144C00690A9B /* MatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA1BD1F2AAD144C00690A9B /* MatchManager.swift */; };
 		5DA1BD222AAD145600690A9B /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA1BD212AAD145600690A9B /* Misc.swift */; };
 		5DA1BD2D2AAD1B1200690A9B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA1BD2C2AAD1B1200690A9B /* MenuView.swift */; };
@@ -81,7 +80,6 @@
 		5D941D422AA93E7B007BA40D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5D9901332AAE4B0000CA84A7 /* AddFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsView.swift; sourceTree = "<group>"; };
 		5D9D0A352AB3718B00CED393 /* PhotoTradingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTradingApp.swift; sourceTree = "<group>"; };
-		5D9ECF422AA7803300936FBF /* TLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLButton.swift; sourceTree = "<group>"; };
 		5DA1BD1F2AAD144C00690A9B /* MatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchManager.swift; sourceTree = "<group>"; };
 		5DA1BD212AAD145600690A9B /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		5DA1BD2C2AAD1B1200690A9B /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 				5DA291142ABA8FDF00CFDED5 /* OpponentView.swift */,
 				5DA525B52AB68EFE002F970B /* TradeCompleteView.swift */,
 				5D0A2D772AA6AFBB00AC4B8F /* HeaderView.swift */,
-				5D9ECF422AA7803300936FBF /* TLButton.swift */,
 				5D0A2D5D2AA6AA2900AC4B8F /* LoginView.swift */,
 				5D0A2D5F2AA6AA3600AC4B8F /* RegisterView.swift */,
 			);
@@ -392,7 +389,6 @@
 				5D941D432AA93E7B007BA40D /* Extensions.swift in Sources */,
 				5DA291152ABA8FDF00CFDED5 /* OpponentView.swift in Sources */,
 				5DA1BD2D2AAD1B1200690A9B /* MenuView.swift in Sources */,
-				5D9ECF432AA7803300936FBF /* TLButton.swift in Sources */,
 				5D9901342AAE4B0000CA84A7 /* AddFriendsView.swift in Sources */,
 				5DA4EB402AAD4C760073081B /* GameView.swift in Sources */,
 				5DA1BD202AAD144C00690A9B /* MatchManager.swift in Sources */,
