@@ -35,13 +35,7 @@ struct PlayerView: View {
                 .edgesIgnoringSafeArea(.bottom)
             // Seperates trade now button
                 .padding(.top, 30)
-            
-            //            Rectangle()
-            //            .frame(height: 5)
-            //            .foregroundColor(Color.red)
-            //            .edgesIgnoringSafeArea(.bottom)
         }
-        //.padding(.bottom, 30)
         .background(Color.black)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
