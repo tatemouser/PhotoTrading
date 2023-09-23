@@ -26,13 +26,13 @@ struct OpponentView: View {
                     DottedBoxView()
                     DottedBoxView()
                 }
-                //.padding(.bottom, 15)
+                .padding(.bottom, 15)
                 //.frame(maxWidth: .infinity, alignment: .center)
                 //.frame(width: .infinity, height: .infinity)
-
             }
         }
         //.frame(width: .infinity, height: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
     }
 }

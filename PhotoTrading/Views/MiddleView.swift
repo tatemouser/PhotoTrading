@@ -52,7 +52,7 @@ struct MiddleView: View {
             }
             //.padding(.trailing, 50)
         }
-        .frame(maxWidth: .infinity) //, maxHeight: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
         .background(Color("LightBlue1"))
     }

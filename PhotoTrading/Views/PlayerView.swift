@@ -43,7 +43,7 @@ struct PlayerView: View {
         }
         //.padding(.bottom, 30)
         .background(Color.black)
-        .frame(width: .infinity, height: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
     }
 }
